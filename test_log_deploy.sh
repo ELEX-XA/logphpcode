@@ -1,0 +1,1 @@
+rsync -vzrtopg --delete --exclude *.log --exclude *.sql /data/log_deploy/ 10.32.11.158::www
