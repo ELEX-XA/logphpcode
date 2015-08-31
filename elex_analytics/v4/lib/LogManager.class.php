@@ -2,6 +2,10 @@
 class LogManager{
 	private $ea_start_time;
 	private $appidArr;
+	private $internet1;
+	/*
+     * 项目wuzijing作测试用
+     */
 	function __construct(){
 		$this->ea_start_time=microtime(true);
 		$this->appidArr = array(
@@ -15,7 +19,11 @@ class LogManager{
 		    "monkeyking","darkorbit","loa","myfreezoo","mlf","farmerama","drakensang","piratestorm","guardiaoonline","dragon-pals","hog","cuponkit","cuponkit-ext","unnamedsoft",
 		    "unsoftnvd","internet-1","internet-2","internet","chhp-unistallmaster","chhp-myoivu","prote-ff-extension","sof-installer","sof-newgdppop","qtype","qtyper",
 		    "quick-sidebar","quick-start","searchprotect","usv9","jiggybonga","xlfc","xlfc-cbnc","yzzt","csbhtw","kszl","ddt","gcld","gcld","gs","age","age2","agei","agei2",
-		    "aoerts","ram","ba2","cok","cokfb","happyfarm","happyfarmer","coktw","cokmi","thor","rafo"
+		    "aoerts","ram","ba2","cok","cokfb","happyfarm","coktw","cokmi","thor","rafo","firefox-searchengine","gggggg","do-search","wuzijing"
+		);
+		$this->internet1 = array(
+		    "webssearches","key-find","awesomehp","sweet-page","v9","do-search","aartemis","omiga-plus","qone8","dosearches","delta-homes","22apple","22find","qvo6","portaldosites",
+		    "usv9","nationzoom","istart123","vi-view","istartsurf","mystartsearch","omniboxes","luckysearches","oursurfing","isearch123"
 		);
 	}
 
@@ -35,6 +43,7 @@ class LogManager{
 		if(!isset($_REQUEST['appid']) || $_REQUEST['appid']=="") throw new Exception("appid is not set");
 		if(!in_array(strtolower($_REQUEST['appid']),$this->appidArr)) throw new Exception("appid invalid");
 		if(!isset($_REQUEST['uid']) || $_REQUEST['uid']=="" ) throw new Exception("uid is not set");
+		if(in_array(strtolower($_REQUEST['appid']),$this->$internet1) && preg_match('/^[0-9]*$/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
 		$_REQUEST['appid']=strtolower($_REQUEST['appid']);  
 	}
 	function logEnter(){
