@@ -43,7 +43,7 @@ class LogManager{
 		if(!isset($_REQUEST['appid']) || $_REQUEST['appid']=="") throw new Exception("appid is not set");
 		if(!in_array(strtolower($_REQUEST['appid']),$this->appidArr)) throw new Exception("appid invalid");
 		if(!isset($_REQUEST['uid']) || $_REQUEST['uid']=="" ) throw new Exception("uid is not set");
-		if(in_array(strtolower($_REQUEST['appid']),$this->$internet1) && preg_match('/^[0-9]*$/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
+		if(in_array(strtolower($_REQUEST['appid']),$this->internet1) && preg_match('/^[0-9]*$/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
 		$_REQUEST['appid']=strtolower($_REQUEST['appid']);  
 	}
 	function logEnter(){
