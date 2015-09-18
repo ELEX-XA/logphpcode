@@ -20,7 +20,7 @@ class LogManager{
 		    "unsoftnvd","internet-1","internet-2","internet","chhp-unistallmaster","chhp-myoivu","prote-ff-extension","sof-installer","sof-newgdppop","qtype","qtyper",
 		    "quick-sidebar","quick-start","searchprotect","usv9","jiggybonga","xlfc","xlfc-cbnc","yzzt","csbhtw","kszl","ddt","gcld","gcld","gs","age","age2","agei","agei2",
 		    "aoerts","ram","ba2","cok","cokfb","happyfarm","coktw","cokmi","thor","rafo","firefox-searchengine","gggggg","do-search","wuzijing","elex337","minigames337",
-		    "pay337","337admin","ddten","web337vip"
+		    "pay337","337admin","ddten","web337vip","unextnvd"
 		);
 		$this->internet1 = array(
 		    "webssearches","key-find","awesomehp","sweet-page","v9","do-search","aartemis","omiga-plus","qone8","dosearches","delta-homes","22apple","22find","qvo6","portaldosites",
@@ -44,7 +44,7 @@ class LogManager{
 		if(!isset($_REQUEST['appid']) || $_REQUEST['appid']=="") throw new Exception("appid is not set");
 		if(!in_array(strtolower($_REQUEST['appid']),$this->appidArr)) throw new Exception("appid invalid");
 		if(!isset($_REQUEST['uid']) || $_REQUEST['uid']=="" ) throw new Exception("uid is not set");
-		if(in_array(strtolower($_REQUEST['appid']),$this->internet1) && preg_match('/^[0-9]+[_]?[0-9]+[_]?.*$/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
+		if(in_array(strtolower($_REQUEST['appid']),$this->internet1) && preg_match('/^([0-9]+_[0-9]+_)|(^[0-9]+$)/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
 		$_REQUEST['appid']=strtolower($_REQUEST['appid']);  
 	}
 	function logEnter(){
