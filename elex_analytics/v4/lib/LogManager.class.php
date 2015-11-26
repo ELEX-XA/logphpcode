@@ -21,7 +21,7 @@ class LogManager{
 		    "quick-sidebar","quick-start","searchprotect","usv9","jiggybonga","xlfc","xlfc-cbnc","yzzt","csbhtw","kszl","ddt","gcld","gcld","gs","age","age2","agei","agei2",
 		    "aoerts","ram","ba2","cok","cokfb","happyfarm","coktw","cokmi","thor","rafo","firefox-searchengine","gggggg","do-search","wuzijing","elex337","minigames337",
 		    "pay337","337admin","ddten","web337vip","unextnvd","sof-mcassist","ggggggsite","mysites123","webpageing","yoursites123","istartpage123","surfpageing","mysurfing123",
-		    "sof-filecheck","ffffff"
+		    "sof-filecheck","ffffff","chroomium","crxbro"
 		);
 		$this->internet1 = array(
 		    "webssearches","key-find","awesomehp","sweet-page","v9","do-search","aartemis","omiga-plus","qone8","dosearches","delta-homes","22apple","22find","qvo6","portaldosites",
