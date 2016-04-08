@@ -3,6 +3,7 @@ class LogManager{
 	private $ea_start_time;
 	private $appidArr;
 	private $internet1;
+	private $reportPids;
 	/*
      * 项目wuzijing作测试用
      */
@@ -23,12 +24,13 @@ class LogManager{
 		    "pay337","337admin","ddten","web337vip","unextnvd","sof-mcassist","ggggggsite","mysites123","webpageing","yoursites123","istartpage123","surfpageing","mysurfing123",
 		    "sof-filecheck","ffffff","chroomium","crxbro","datazip","gggggg2","minisoft","ghokswa","didisearch","qksee","winzippers","rafonvd","search2000s","ooxxsearch",
 			"uninstallmaster","govome","aowe2","mustang","gggggg3","ggggggsite3","sof-dloadsw","sofclean","report","hohosearch","walasearch","mysearch123","rafo-income","smwb",
-			"sof-uncheckit-dl"
+			"sof-uncheckit-dl","nicesearches"
 		);
 		$this->internet1 = array(
 		    "webssearches","key-find","awesomehp","sweet-page","v9","do-search","aartemis","omiga-plus","qone8","dosearches","delta-homes","22apple","22find","qvo6","portaldosites",
 		    "usv9","nationzoom","istart123","vi-view","istartsurf","mystartsearch","omniboxes","luckysearches","oursurfing","isearch123"
 		);
+		$this->reportPids = array("unsoftnvd","chroomium","crxbo","ghokswa");
 	}
 
 //	const $_zlib_encode = "application/x-www-form-urlencoded";
@@ -48,6 +50,7 @@ class LogManager{
 		if(!in_array(strtolower($_REQUEST['appid']),$this->appidArr)) throw new Exception("appid invalid");
 		if(!isset($_REQUEST['uid']) || $_REQUEST['uid']=="" ) throw new Exception("uid is not set");
 		if(in_array(strtolower($_REQUEST['appid']),$this->internet1) && preg_match('/^([0-9]+_[0-9]+_)|(^[0-9]+$)/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
+		if(in_array(strtolower($_REQUEST['appid']),$this->reportPids)) $_REQUEST['appid']="report";
 		$_REQUEST['appid']=strtolower($_REQUEST['appid']);  
 	}
 	function logEnter(){
