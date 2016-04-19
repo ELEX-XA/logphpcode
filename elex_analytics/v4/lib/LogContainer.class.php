@@ -56,7 +56,11 @@ class LogContainer{
 		$t=explode(",",$triple,2);
 		$property=$t[0];
 		$val=$t[1];
-		$this->update[$property]=trim($val);
+		if($this->appid=="ggggggsite" and $property=="nation"){
+			// filter project "ggggggsite" "nation"
+		}else{
+			$this->update[$property]=trim($val);
+		}
 		//add ref field for ad system
 		//format:appid uid ref user.visit {} timestamp
 		if($property=="ref"){
