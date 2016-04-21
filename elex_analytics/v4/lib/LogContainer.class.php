@@ -56,7 +56,8 @@ class LogContainer{
 		$t=explode(",",$triple,2);
 		$property=$t[0];
 		$val=$t[1];
-		if($this->appid=="ggggggsite" and $property=="nation"){
+		//$this->update[$property]=trim($val);
+		if($this->appid=="ggggggsite" and $property=="nation" and (strpos(trim($val),"0x") === 0)){
 			// filter project "ggggggsite" "nation"
 		}else{
 			$this->update[$property]=trim($val);
