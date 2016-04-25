@@ -73,8 +73,8 @@ class LogManager{
 			if ($_REQUEST['appid'] == "report") {
 				if (strpos($key, "action") === 0) {
 					$events = explode(".", $value);
-					if (count($events) >= 2) {
-						if (in_array($events[0].".".$events[1],$this->eventIds) ==1){
+					if (count($events) >= 3) {
+						if (in_array($events[0].".".$events[2],$this->eventIds) ==1){
 							return 1;
 						}
 					}
