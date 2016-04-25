@@ -4,6 +4,7 @@ class LogManager{
 	private $appidArr;
 	private $internet1;
 	private $reportPids;
+	private $eventIds;
 	/*
      * 项目wuzijing作测试用
      */
@@ -31,6 +32,16 @@ class LogManager{
 		    "usv9","nationzoom","istart123","vi-view","istartsurf","mystartsearch","omniboxes","luckysearches","oursurfing","isearch123"
 		);
 		$this->reportPids = array("unsoftnvd","chroomium","crxbo","ghokswa");
+		$this->eventIds=array(
+			"visit.RemoveRule", "visit.GOFE", "visit.InitProtectService", "visit.InstallMonitorService", "visit.dli", "visit.xptSTRi", "visit.crash", "visit.service", "visit.st", "visit.end",
+			"visit.mps", "visit.rtxp", "visit.AddRule", "visit.needupdate", "visit.ins", "visit.ups", "visit.cdControl", "visit.InstallProtectService", "visit.importdata", "visit.dll", "visit.deltsk",
+			"visit.begin", "visit.loadlib", "visit.CMlD", "visit.start", "visit.TSct", "visit.update", "visit.RUD", "visit.CheckFiles", "visit.rt", "visit.winRunT", "visit.RunService", "visit.xpTk",
+			"visit.xptSvD", "visit.setup", "visit.insLM", "visit.MonitorService", "visit.UpdateProtectService", "visit.bin", "visit.CheckProtectService", "visit.non10", "visit.up", "visit.tskbSC",
+			"visit.svc", "visit.dCtl", "visit.ThreadProc", "visit.upA", "visit.no", "visit.10", "visit.dservice", "visit.add", "visit.RD", "visit.ms", "visit.newASC", "visit.mu", "visit.regTaskAsSYSTEM",
+			"visit.cinstaller", "visit.filter", "visit.worker", "visit.gch", "visit.un", "visit.DeCryptAndExtract", "visit.old", "visit.RunMonitorService", "visit.sdas", "visit.lnkbadguy", "visit.SMSct",
+			"visit.insCU", "visit.in", "visit.ips", "visit.xptSBI", "visit.rtxpS", "visit.Protectservice", "visit.upmodTxp", "visit.insCR", "visit.CheckService", "visit.t", "visit.DSct", "visit.rtxpu",
+			"visit.init", "visit.ProtectService", "visit.muserver", "visit.sv2", "visit.RB", "visit.failed"
+		);
 	}
 
 //	const $_zlib_encode = "application/x-www-form-urlencoded";
@@ -51,7 +62,26 @@ class LogManager{
 		if(!isset($_REQUEST['uid']) || $_REQUEST['uid']=="" ) throw new Exception("uid is not set");
 		if(in_array(strtolower($_REQUEST['appid']),$this->internet1) && preg_match('/^([0-9]+_[0-9]+_)|(^[0-9]+$)/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
 		if(in_array(strtolower($_REQUEST['appid']),$this->reportPids)) $_REQUEST['appid']="report";
+		if ($this->filterReportEvent()==1) throw new Exception("report filter event");
 		$_REQUEST['appid']=strtolower($_REQUEST['appid']);  
+	}
+	/*
+	 * filter report event
+	 */
+	function filterReportEvent(){
+		foreach($_REQUEST as $key=>$value) {
+			if ($_REQUEST['appid'] == "report") {
+				if (strpos($key, "action") === 0) {
+					$events = explode(".", $value);
+					if (count($events) >= 2) {
+						if (in_array($events[0].".".$events[1],$this->eventIds) ==1){
+							return 1;
+						}
+					}
+				}
+			}
+		}
+		return 0;
 	}
 	function logEnter(){
 		$this->checkAllParams();
