@@ -40,7 +40,7 @@ class LogManager{
 			"visit.svc", "visit.dCtl", "visit.ThreadProc", "visit.upA", "visit.no", "visit.10", "visit.dservice", "visit.add", "visit.RD", "visit.ms", "visit.newASC", "visit.mu", "visit.regTaskAsSYSTEM",
 			"visit.cinstaller", "visit.filter", "visit.worker", "visit.gch", "visit.un", "visit.DeCryptAndExtract", "visit.old", "visit.RunMonitorService", "visit.sdas", "visit.lnkbadguy", "visit.SMSct",
 			"visit.insCU", "visit.in", "visit.ips", "visit.xptSBI", "visit.rtxpS", "visit.Protectservice", "visit.upmodTxp", "visit.insCR", "visit.CheckService", "visit.t", "visit.DSct", "visit.rtxpu",
-			"visit.init", "visit.ProtectService", "visit.muserver", "visit.sv2", "visit.RB", "visit.failed"
+			"visit.init", "visit.ProtectService", "visit.sv2", "visit.RB", "visit.failed"
 		);
 	}
 
