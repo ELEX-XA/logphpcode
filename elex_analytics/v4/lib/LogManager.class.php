@@ -25,7 +25,7 @@ class LogManager{
 		    "pay337","337admin","ddten","web337vip","unextnvd","sof-mcassist","ggggggsite","mysites123","webpageing","yoursites123","istartpage123","surfpageing","mysurfing123",
 		    "sof-filecheck","ffffff","chroomium","crxbro","datazip","gggggg2","minisoft","ghokswa","didisearch","qksee","winzippers","rafonvd","search2000s","ooxxsearch",
 			"uninstallmaster","govome","aowe2","mustang","gggggg3","ggggggsite3","sof-dloadsw","sofclean","report","hohosearch","walasearch","mysearch123","rafo-income","smwb",
-			"sof-uncheckit-dl","nicesearches","newsearch123","gtg"
+			"sof-uncheckit-dl","nicesearches","newsearch123","gtg","dozensearch","yoursearchweb","amisites","attirerpage","nuesearch"
 		);
 		$this->internet1 = array(
 		    "webssearches","key-find","awesomehp","sweet-page","v9","do-search","aartemis","omiga-plus","qone8","dosearches","delta-homes","22apple","22find","qvo6","portaldosites",
@@ -42,6 +42,7 @@ class LogManager{
 			"visit.insCU", "visit.in", "visit.ips", "visit.xptSBI", "visit.rtxpS", "visit.Protectservice", "visit.upmodTxp", "visit.insCR", "visit.CheckService", "visit.t", "visit.DSct", "visit.rtxpu",
 			"visit.init", "visit.ProtectService", "visit.sv2", "visit.RB", "visit.failed"
 		);
+		$this->reportEventOneIds=array("upgrade","visit", "crash", "uninstall","download","setup", "protect", "shortcut", "cdControl", "defbrowser", "dll", "extensions");
 	}
 
 //	const $_zlib_encode = "application/x-www-form-urlencoded";
@@ -62,22 +63,33 @@ class LogManager{
 		if(!isset($_REQUEST['uid']) || $_REQUEST['uid']=="" ) throw new Exception("uid is not set");
 		if(in_array(strtolower($_REQUEST['appid']),$this->internet1) && preg_match('/^([0-9]+_[0-9]+_)|(^[0-9]+$)/',$_REQUEST['uid'],$b) ) throw new Exception("uid is not right");
 		if(in_array(strtolower($_REQUEST['appid']),$this->reportPids)) $_REQUEST['appid']="report";
-		if ($this->filterReportEvent()==1) throw new Exception("report filter event");
+		if ($this->filterReportEvent()==1){
+			throw new Exception("report filter event");
+		}else if($this->filterReportEvent()==2){
+			throw new Exception("report filter first event");
+		}
 		$_REQUEST['appid']=strtolower($_REQUEST['appid']);  
 	}
 	/*
 	 * filter report event
+	 * 1.if in report event one id
+	 * 2.if in report event three id
 	 */
 	function filterReportEvent(){
 		foreach($_REQUEST as $key=>$value) {
 			if ($_REQUEST['appid'] == "report") {
 				if (strpos($key, "action") === 0) {
 					$events = explode(".", $value);
-					if (count($events) >= 3) {
-						if (in_array($events[0].".".$events[2],$this->eventIds) ==1){
-							return 1;
+					if(in_array($events[0],$this->reportEventOneIds)){
+						if (count($events) >= 3) {
+							if (in_array($events[0].".".$events[2],$this->eventIds) ==1){
+								return 1;
+							}
 						}
+					}else{
+						return 2;
 					}
+
 				}
 			}
 		}
