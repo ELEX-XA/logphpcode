@@ -25,7 +25,8 @@ class LogManager{
 		    "pay337","337admin","ddten","web337vip","unextnvd","sof-mcassist","ggggggsite","mysites123","webpageing","yoursites123","istartpage123","surfpageing","mysurfing123",
 		    "sof-filecheck","ffffff","chroomium","crxbro","datazip","gggggg2","minisoft","ghokswa","didisearch","qksee","winzippers","rafonvd","search2000s","ooxxsearch",
 			"uninstallmaster","govome","aowe2","mustang","gggggg3","ggggggsite3","sof-dloadsw","sofclean","report","hohosearch","walasearch","mysearch123","rafo-income","smwb",
-			"sof-uncheckit-dl","nicesearches","newsearch123","gtg","dozensearch","yoursearchweb","amisites","attirerpage","nuesearch"
+			"sof-uncheckit-dl","nicesearches","newsearch123","gtg","dozensearch","yoursearchweb","amisites","attirerpage","nuesearch","youndoo","searchvvay","universalsearch",
+			"trotux"
 		);
 		$this->internet1 = array(
 		    "webssearches","key-find","awesomehp","sweet-page","v9","do-search","aartemis","omiga-plus","qone8","dosearches","delta-homes","22apple","22find","qvo6","portaldosites",
